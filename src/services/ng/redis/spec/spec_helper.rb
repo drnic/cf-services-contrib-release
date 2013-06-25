@@ -58,7 +58,7 @@ def getNodeTestConfig
     :port_range => parse_property(config, "port_range", Range),
 
     # parse redis wardenized-service control related config
-    :service_bin_dir => {"2.2" => "/var/vcap/packages/redis22", "2.4" => "/var/vcap/packages/redis24", "2.6" => "/var/vcap/packages/redis26"},
+    :service_bin_dir => {"2.6" => "/var/vcap/packages/redis26"},
     :service_common_dir => "/var/vcap/store/redis_common",
 
     # redis related configs

@@ -43,3 +43,7 @@ postgres/postgres-9.0.3-1.i386.tar.gz:
   object_id: rest/objects/4e4e78bca21e121004e4e7d511f55304f306b0371f99
   sha: b2bde31e720eb219bfdc9f1b784f985ecca2cbfb
   size: 15111387
+redis/redis-2.6.2.tar.gz:
+  object_id: rest/objects/4e4e78bca61e122004e4e8ec6b44b60508af9c8eab61
+  sha: 93e632ce88de07a9845aa5bcab67bdc16a7b574a
+  size: 1000600
