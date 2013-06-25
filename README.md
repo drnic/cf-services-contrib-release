@@ -2,6 +2,15 @@
 
 This repository contains legacy services components which are not under active development. We can cannot vouch for their functionality. Feel free to try them as-is and enhance them as needed.
 
+## Installation
+
+```
+$ ./update
+$ echo "---\ndev_name: cf-services-contrib" > config/dev.yml
+$ bosh create release --force
+$ bosh -n upload release
+```
+
 ## Repository Contents
 
 This repository is structures for use with BOSH, an open source tool for release engineering, deployment and lifecycle management of large scale distributed services. The directories are:
