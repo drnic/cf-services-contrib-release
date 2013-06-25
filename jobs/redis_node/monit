@@ -1,7 +1,17 @@
 <%
+service = "redis"
+plan_enabled = properties.service_plans && properties.service_plans.send(service.to_sym)
+plan = properties.plan || "free"
+plan_conf = plan_enabled && properties.service_plans.send(service.to_sym).send(plan.to_sym).configuration
+
 node = properties.redis_node
 health_check_port = node.health_check_port || 2345
+use_warden= plan_conf.warden && plan_conf.warden.enable
+
+supported_versions = node.supported_versions
 %>
+
+<% if use_warden %>
 check process redis_warden
   with pidfile /var/vcap/sys/run/warden/redis_warden.pid
   start program "/var/vcap/jobs/redis_node/bin/warden_ctl start"
@@ -13,6 +23,7 @@ check process redis_warden
   then restart
   group vcap
   group warden
+<% end %>
 
 check process redis_node
   with pidfile /var/vcap/sys/run/redis_node/redis_node.pid
@@ -20,13 +31,11 @@ check process redis_node
   stop program "/var/vcap/jobs/redis_node/bin/redis_node_ctl stop" with timeout 60 seconds
   group vcap
   group node
+  <% if use_warden %>
   depends on redis_warden
+  <% end %>
 
 <%
-service = "redis"
-plan_enabled = properties.service_plans && properties.service_plans.send(service.to_sym)
-plan = properties.plan || "free"
-plan_conf = plan_enabled && properties.service_plans.send(service.to_sym).send(plan.to_sym).configuration
 if properties.service_lifecycle and plan_enabled and plan_conf.lifecycle and plan_conf.lifecycle.enable
   worker_count = plan_conf.lifecycle.worker_count || 1
   worker_count.times do |ind|
