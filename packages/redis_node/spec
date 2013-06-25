@@ -4,5 +4,7 @@ dependencies:
 - sqlite
 - ruby
 files:
-- services/redis/**/*
+- services/ng/redis/**/*
+- services_warden/warden/**/*
 - pkg_utils/*
+- common/services/utils.sh
