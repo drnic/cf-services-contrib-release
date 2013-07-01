@@ -19,7 +19,13 @@ gem 'vcap_services_base', :git => 'git://github.com/cloudfoundry/vcap-services-b
 gem 'warden-client', :require => ['warden/client'], :git => 'git://github.com/cloudfoundry/warden.git', :ref => 'fe6cb51'
 gem 'warden-protocol', :require => ['warden/protocol'], :git => 'git://github.com/cloudfoundry/warden.git', :ref => 'fe6cb51'
 
+group :development do
+  gem "foreman"
+end
+
 group :test do
+  gem "foreman"
+
   gem "rake"
   gem "rspec"
   gem "rcov"
