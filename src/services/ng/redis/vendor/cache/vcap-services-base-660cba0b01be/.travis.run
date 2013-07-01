@@ -1,0 +1,11 @@
+set -e -x -u
+./start_warden.sh
+
+sudo aptitude install -y libsqlite3-dev
+bundle install
+
+failure=0
+bundle exec rake spec || failure=$?
+
+sudo pkill -f ruby || true
+exit $failure

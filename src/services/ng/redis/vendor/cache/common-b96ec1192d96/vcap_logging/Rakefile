@@ -1,0 +1,10 @@
+require 'rubygems'
+require 'bundler'
+Bundler.setup
+Bundler::GemHelper.install_tasks
+
+task :spec do
+  desc 'Run tests'
+  sh('bundle install')
+  sh('cd spec && rake spec')
+end

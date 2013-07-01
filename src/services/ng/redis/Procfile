@@ -1,0 +1,3 @@
+nats: nats-server
+gateway: bundle exec bin/redis_gateway
+node: bundle exec bin/redis_node

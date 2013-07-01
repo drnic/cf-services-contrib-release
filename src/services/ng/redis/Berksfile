@@ -1,0 +1,8 @@
+site :opscode
+
+# ubuntu only
+cookbook "apt"
+
+# cookbook "bosh_agent::install"
+# cookbook "bosh_agent::configure"
+# cookbook "bosh_agent::client"
